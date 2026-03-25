@@ -1,13 +1,33 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jindagi Ek Shuruaat</title><style>
-body {font-family: Arial; margin:0; padding:0;}
-header {background:#111; color:#fff; padding:15px; text-align:center;}
-nav a {color:white; margin:10px; text-decoration:none;}
-section {padding:40px;}
+<title>Jindagi Ek Shuruaat</title>
 
+<style>
+body {
+  font-family: Arial;
+  margin:0;
+  padding:0;
+}
+
+/* HEADER */
+header {
+  background:#111;
+  color:#fff;
+  padding:15px;
+  text-align:center;
+}
+
+nav a {
+  color:white;
+  margin:10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* HERO */
 .hero {
   background: url('hero.jpg') center/cover;
   color: white;
@@ -15,97 +35,119 @@ section {padding:40px;}
   padding: 100px 20px;
 }
 
-.btn {background:#111; color:#fff; padding:10px 20px; text-decoration:none; border-radius:5px;}
+.btn {
+  background:#111;
+  color:#fff;
+  padding:10px 20px;
+  text-decoration:none;
+  border-radius:5px;
+}
 
-.gallery {
+/* SECTIONS */
+section {
+  padding:40px;
+}
+
+/* IMPACT */
+.impact {
   display:flex;
+  justify-content:space-around;
+  text-align:center;
   flex-wrap:wrap;
-  gap:10px;
-}
-.gallery img {
-  width:200px;
-  border-radius:10px;
-  transition:0.3s;
-}
-.gallery img:hover {
-  transform:scale(1.05);
 }
 
-.card {
-  background:#f5f5f5;
-  padding:20px;
-  margin-bottom:30px;
-  border-radius:10px;
+.impact div {
+  margin:20px;
 }
 
-footer {background:#111; color:#fff; text-align:center; padding:10px;}
-</style></head><body><header>
+.impact h2 {
+  margin:0;
+  font-size:30px;
+  color:#111;
+}
+
+/* FOOTER */
+footer {
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
 <h1>Jindagi Ek Shuruaat</h1>
+
 <nav>
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="#work">Our Work</a>
-<a href="#donate">Donate</a>
-<a href="#contact">Contact</a>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="work.html">Our Work</a>
+<a href="donate.html">Donate</a>
+<a href="contact.html">Contact</a>
 </nav>
-</header><section class="hero">
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
 <h2>Serving humanity, one step at a time.</h2>
 <p>Your small help can change someone's life.</p>
-<a href="#donate" class="btn">Donate Now</a>
-</section><section id="about">
+<a href="donate.html" class="btn">Donate Now</a>
+</section>
+
+<!-- ABOUT -->
+<section>
 <h2>About Us</h2>
 <p><b>Jindagi Ek Shuruaat</b></p>
 <p>Creating impact through compassion and action.</p>
 <p>Focused on community welfare, animal care, and social awareness, we are dedicated to addressing critical issues such as hunger, safety, child labour, and environmental sustainability.</p>
 <p>Together, we can create meaningful change.</p>
-</section><section id="work">
-<h2>Our Work</h2><div class="card">
-<h3>Food Distribution Campaign</h3>
-<p>We organize regular food distribution drives in slum areas and roadside locations where people struggle for daily meals. Our team prepares and distributes nutritious food packets to ensure no one sleeps hungry. This campaign focuses on dignity, care, and immediate hunger relief.</p>
-<div class="gallery">
-<img src="food1.jpg"><img src="food2.jpg"><img src="food3.jpg">
+</section>
+
+<!-- IMPACT -->
+<section>
+<h2>Our Impact</h2>
+
+<div class="impact">
+
+<div>
+<h2>1000+</h2>
+<p>Meals Distributed</p>
 </div>
-</div><div class="card">
-<h3>Blanket Distribution Campaign</h3>
-<p>During harsh winters, we distribute blankets and warm clothes to homeless and underprivileged people. Many families suffer due to extreme cold, and this initiative helps them survive safely and comfortably during winter nights.</p>
-<div class="gallery">
-<img src="blanket1.jpg"><img src="blanket2.jpg"><img src="blanket3.jpg">
+
+<div>
+<h2>500+</h2>
+<p>Families Helped</p>
 </div>
-</div><div class="card">
-<h3>Meal Distribution Campaign</h3>
-<p>We provide freshly cooked meals to people in need across different areas. This campaign ensures hygiene, quality food, and timely distribution, especially targeting daily wage workers and needy families.</p>
-<div class="gallery">
-<img src="meal1.jpg"><img src="meal2.jpg"><img src="meal3.jpg">
+
+<div>
+<h2>200+</h2>
+<p>Animals Rescued</p>
 </div>
-</div><div class="card">
-<h3>Animal Rescue & Welfare</h3>
-<p>We actively rescue injured and abandoned animals, provide them medical treatment, shelter, and care. Our mission is to protect voiceless lives and promote kindness towards animals in society.</p>
-<div class="gallery">
-<img src="animal1.jpg"><img src="animal2.jpg"><img src="animal3.jpg">
+
+<div>
+<h2>50+</h2>
+<p>Campaigns Done</p>
 </div>
-</div><div class="card">
-<h3>Plantation Drive</h3>
-<p>We conduct plantation drives to promote environmental sustainability. By planting trees and spreading awareness, we aim to create a greener and healthier future for upcoming generations.</p>
-<div class="gallery">
-<img src="plant1.jpg"><img src="plant2.jpg"><img src="plant3.jpg">
+
 </div>
-</div><div class="card">
-<h3>Women Safety Campaign</h3>
-<p>We organize awareness campaigns for women safety, educating girls about their rights, self-defense, and safety measures. Our goal is to empower women and build a safer society.</p>
-<div class="gallery">
-<img src="women1.jpg"><img src="women2.jpg"><img src="women3.jpg">
-</div>
-</div></section><section id="donate">
-<h2>Donate</h2>
-<p>UPI ID: ashutoshsingh2345@oksbi</p>
-<img src="qr.png" width="200">
-<p><b>Scan & Support Our Mission 🙏</b></p>
-</section><section id="contact">
-<h2>Contact</h2>
-<p>Email: jindagiekshuruaat@gmail.com</p>
-<p>Phone: +91 6386851347</p>
-</section><footer>
+
+</section>
+
+<!-- CTA -->
+<section style="text-align:center;">
+<h2>Be a Part of Change</h2>
+<p>Support us in making a difference</p>
+<a href="donate.html" class="btn">Donate Now</a>
+</section>
+
+<footer>
 <p>© 2026 Jindagi Ek Shuruaat</p>
-</footer></body>
+</footer>
+
+</body>
 </html>
 
