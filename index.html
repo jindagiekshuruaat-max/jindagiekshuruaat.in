@@ -1,139 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jindagi Ek Shuruaat</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jindagi Ek Shuruaat — A step towards dignity, care, and positive change.</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
 <style>
-body {margin:0; font-family:Arial;}
-
-header {
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:#111;
-color:#fff;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --orange: #E8821A;
+  --orange-dark: #c96d0e;
+  --orange-pale: #FEF3E6;
+  --ink: #1a1a1a;
+  --ink-muted: #555;
+  --white: #ffffff;
+  --light-bg: #f8f8f8;
+  --border: rgba(0,0,0,0.1);
+  --dark-bg: #1a1a1a;
+  --dark-mid: #222;
 }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; color: var(--ink); background: #fff; line-height: 1.7; font-size: 15px; }
 
-header img {width:40px;}
+.topbar { background: var(--ink); color: rgba(255,255,255,0.75); display: flex; align-items: center; justify-content: space-between; padding: 8px 64px; font-size: 13px; }
+.topbar-left { display: flex; gap: 32px; align-items: center; }
+.topbar-socials { display: flex; gap: 12px; align-items: center; }
+.topbar-socials a { width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px; transition: background 0.2s; }
+.topbar-socials a:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
 
-nav a {color:white; margin:10px; text-decoration:none;}
+nav { position: sticky; top: 0; z-index: 200; background: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 64px; border-bottom: 3px solid var(--orange); }
+.nav-logo { display: flex; flex-direction: column; gap: 1px; text-decoration: none; padding: 16px 0; }
+.nav-logo-main { font-family: 'Lora', serif; font-size: 20px; color: var(--ink); font-weight: 600; }
+.nav-logo-sub { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); font-weight: 600; }
+.nav-links { display: flex; list-style: none; height: 70px; }
+.nav-links a { display: flex; align-items: center; height: 100%; text-decoration: none; font-size: 12px; font-weight: 700; color: var(--ink); padding: 0 16px; letter-spacing: 0.04em; text-transform: uppercase; border-bottom: 3px solid transparent; margin-bottom: -3px; transition: color 0.2s, border-color 0.2s; }
+.nav-links a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+.nav-cta { background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; padding: 12px 28px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.2s; white-space: nowrap; }
+.nav-cta:hover { background: var(--orange-dark); }
 
-.hero {background:#f5f5f5; padding:60px 20px;}
-.hero-container {display:flex; flex-wrap:wrap; justify-content:space-between;}
+#hero { position: relative; min-height: 92vh; display: flex; align-items: center; background: #1a1208; overflow: hidden; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.4) 100%); z-index: 1; }
+.hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse at 75% 50%, rgba(232,130,26,0.18) 0%, transparent 55%), linear-gradient(135deg, #1a1208 0%, #2d1e08 50%, #1a2a10 100%); }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.035) 1px, transparent 0); background-size: 44px 44px; }
+.hero-content { position: relative; z-index: 2; padding: 120px 64px 100px; max-width: 740px; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 22px; }
+.hero-eyebrow::before { content: ''; width: 36px; height: 2px; background: var(--orange); }
+.hero-title { font-family: 'Lora', serif; font-size: clamp(40px, 5.5vw, 70px); line-height: 1.1; font-weight: 600; color: #fff; margin-bottom: 22px; }
+.hero-title span { color: var(--orange); font-style: italic; }
+.hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 560px; margin-bottom: 38px; line-height: 1.9; font-weight: 400; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-orange { background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; padding: 14px 34px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s; display: inline-block; }
+.btn-orange:hover { background: var(--orange-dark); }
+.btn-white-outline { background: transparent; color: #fff; font-size: 13px; font-weight: 700; padding: 14px 34px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; border: 2px solid rgba(255,255,255,0.45); transition: border-color 0.2s; display: inline-block; }
+.btn-white-outline:hover { border-color: var(--orange); }
 
-.hero-left img {width:30%; border-radius:10px;}
-.hero-right {width:45%;}
+.hero-cards { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(3, 1fr); margin: -80px 64px 0; }
+.hc { background: var(--orange); color: #fff; padding: 34px 28px; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); transition: background 0.2s; }
+.hc:last-child { border-right: none; }
+.hc:hover { background: var(--orange-dark); }
+.hc-icon { font-size: 34px; margin-bottom: 12px; }
+.hc h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.hc p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 16px; }
+.hc a { display: inline-block; border: 2px solid rgba(255,255,255,0.55); color: #fff; padding: 7px 20px; font-size: 11px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s; }
+.hc a:hover { background: rgba(255,255,255,0.15); }
 
-.btn {background:#111; color:#fff; padding:10px 20px; text-decoration:none;}
+section { padding: 90px 64px; }
+.sec-label { display: flex; align-items: center; gap: 12px; color: var(--orange); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 12px; }
+.sec-label::before { content: ''; width: 30px; height: 2px; background: var(--orange); }
+.sec-title { font-family: 'Lora', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 600; line-height: 1.2; color: var(--ink); margin-bottom: 14px; }
+.sec-desc { font-size: 14px; color: var(--ink-muted); max-width: 580px; line-height: 1.95; }
 
-section {padding:40px;}
+#about { background: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding-top: 120px; }
+.about-img { position: relative; }
+.about-img-main { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg,#f0e8d8,#e0d0b8); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
+.about-badge { position: absolute; bottom: -20px; right: -20px; background: var(--orange); color: #fff; padding: 22px 26px; text-align: center; }
+.about-badge .big { font-family: 'Lora', serif; font-size: 38px; font-weight: 600; line-height: 1; }
+.about-badge .small { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; opacity: 0.9; }
+.about-feats { display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
+.af { display: flex; gap: 14px; align-items: flex-start; }
+.af-ic { width: 46px; height: 46px; background: var(--orange-pale); border-left: 3px solid var(--orange); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.af-tx h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.af-tx p { font-size: 13px; color: var(--ink-muted); line-height: 1.7; }
+.btn-outline-dark { display: inline-block; border: 2px solid var(--ink); color: var(--ink); padding: 13px 30px; font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; transition: all 0.2s; }
+.btn-outline-dark:hover { background: var(--ink); color: #fff; }
 
-.impact-container {display:flex; gap:30px; justify-content:center;}
-.impact-box {text-align:center;}
+#programs { background: var(--light-bg); }
+.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 52px; border: 1px solid #e8e8e8; }
+.prog-card { background: #fff; padding: 32px 24px; border-right: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; position: relative; overflow: hidden; transition: transform 0.2s; }
+.prog-card:hover { transform: translateY(-4px); z-index: 2; }
+.prog-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.prog-card:hover::after { transform: scaleX(1); }
+.pc-icon { width: 56px; height: 56px; background: var(--orange-pale); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; transition: background 0.2s; }
+.prog-card:hover .pc-icon { background: var(--orange); }
+.prog-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.prog-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.8; }
+.pc-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 11px; font-weight: 700; text-decoration: none; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em; }
 
-.member {display:flex; gap:15px; background:#f5f5f5; padding:15px; border-radius:10px;}
-.member img {width:100px; height:100px; border-radius:50%;}
+#impact { background: var(--dark-bg); padding: 80px 64px; }
+.impact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.impact-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.ib { background: #222; padding: 34px 24px; text-align: center; border-left: 3px solid transparent; transition: border-color 0.2s; }
+.ib:hover { border-left-color: var(--orange); }
+.ib .n { font-family: 'Lora', serif; font-size: 50px; font-weight: 600; color: var(--orange); line-height: 1; }
+.ib .l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-top: 8px; font-weight: 600; }
 
-.review {background:#f5f5f5; padding:15px; margin:10px;}
+#founder { background: #fff; }
+.founder-wrap { display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: start; margin-top: 44px; }
+.founder-photo-box { position: relative; }
+.founder-photo-inner { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg,#f0e8d8,#e0d0b8); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+.founder-name-bar { background: var(--orange); color: #fff; padding: 16px 20px; text-align: center; }
+.founder-name-bar .fn { font-family: 'Lora', serif; font-size: 17px; font-weight: 600; }
+.founder-name-bar .fr { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.85; margin-top: 2px; }
+.founder-quote-box { background: var(--light-bg); padding: 42px; border-left: 4px solid var(--orange); position: relative; }
+.fqm { font-family: 'Lora', serif; font-size: 110px; color: var(--orange); opacity: 0.1; line-height: 1; position: absolute; top: 8px; left: 28px; pointer-events: none; }
+.founder-quote-box p { font-size: 14px; color: var(--ink-muted); line-height: 2; margin-bottom: 18px; position: relative; z-index: 1; }
+.founder-quote-box p:last-of-type { color: var(--ink); font-weight: 600; margin-bottom: 0; }
+.fsign { margin-top: 24px; padding-top: 20px; border-top: 1px solid #e0e0e0; }
+.fsign .sn { font-family: 'Lora', serif; font-size: 18px; font-weight: 600; color: var(--ink); }
+.fsign .sr { font-size: 11px; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-top: 2px; }
 
-footer {background:#111; color:#fff; text-align:center; padding:10px;}
+#team { background: var(--light-bg); }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+.tc { background: #fff; overflow: hidden; transition: transform 0.2s; }
+.tc:hover { transform: translateY(-5px); }
+.tc-photo { width: 100%; aspect-ratio: 1/1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.tc-photo-hint { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.tc-info { padding: 20px 18px; border-top: 3px solid var(--orange); }
+.tc-info h3 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.tc-role { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); font-weight: 700; margin-bottom: 8px; }
+.tc-info p { font-size: 12px; color: var(--ink-muted); line-height: 1.7; }
+
+#gallery { background: #fff; }
+.gal-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 220px 220px; gap: 10px; margin-top: 44px; }
+.gi { overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
+.gi:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gi:nth-child(5) { grid-column: span 2; }
+.gi-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+.gi-lbl { position: absolute; bottom: 0; left: 0; right: 0; background: var(--orange); color: #fff; padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; transform: translateY(100%); transition: transform 0.25s; }
+.gi:hover .gi-lbl { transform: translateY(0); }
+
+#donate { background: var(--dark-bg); }
+.donate-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.donate-amounts { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 18px; }
+.amt-btn { background: transparent; color: rgba(255,255,255,0.65); border: 2px solid rgba(255,255,255,0.22); padding: 10px 22px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Montserrat', sans-serif; }
+.amt-btn:hover, .amt-btn.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+.cc { background: rgba(255,255,255,0.05); border-left: 3px solid var(--orange); padding: 18px 20px; margin-bottom: 14px; }
+.cc h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.cc-bar { height: 4px; background: rgba(255,255,255,0.1); }
+.cc-fill { height: 100%; background: var(--orange); }
+.cc-pct { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 5px; }
+
+#volunteer { background: var(--light-bg); }
+.vol-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.vol-list { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.vi { display: flex; gap: 14px; align-items: flex-start; }
+.vi-num { width: 34px; height: 34px; background: var(--orange); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; }
+.vi strong { font-size: 13px; font-weight: 700; display: block; margin-bottom: 2px; }
+.vi span { font-size: 13px; color: var(--ink-muted); }
+.vf { background: #fff; padding: 36px; border-top: 4px solid var(--orange); }
+.vf h3 { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+.fg { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.fg label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #888; }
+.fg input, .fg select, .fg textarea { border: 1px solid #ddd; padding: 11px 13px; font-size: 13px; font-family: 'Montserrat', sans-serif; color: var(--ink); background: #fff; outline: none; transition: border-color 0.2s; }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--orange); }
+.fg textarea { min-height: 86px; resize: vertical; }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+#contact { background: #fff; }
+.contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.cd { display: flex; flex-direction: column; gap: 22px; margin-top: 28px; }
+.cd-i { display: flex; gap: 14px; align-items: flex-start; }
+.cd-ic { width: 48px; height: 48px; background: var(--orange); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.cd-i h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+.cd-i p { font-size: 13px; color: var(--ink-muted); }
+.cf { background: var(--light-bg); padding: 36px; border-top: 4px solid var(--orange); }
+.cf h3 { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+.btn-os { display: inline-block; background: var(--orange); color: #fff; border: none; cursor: pointer; padding: 14px 32px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s; font-family: 'Montserrat', sans-serif; text-decoration: none; }
+.btn-os:hover { background: var(--orange-dark); }
+
+footer { background: #111; }
+.ft { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding: 60px 64px 44px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.fb .lm { font-family: 'Lora', serif; font-size: 21px; color: #fff; font-weight: 600; }
+.fb .ls { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); font-weight: 700; margin-top: 2px; }
+.fb p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.85; margin-top: 14px; max-width: 250px; }
+.fc h4 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #fff; margin-bottom: 16px; }
+.fc ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.fc ul a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 5px; }
+.fc ul a::before { content: '›'; color: var(--orange); font-size: 15px; }
+.fc ul a:hover { color: var(--orange); }
+.fb-bot { display: flex; justify-content: space-between; align-items: center; padding: 18px 64px; font-size: 12px; color: rgba(255,255,255,0.28); }
+.fh { color: var(--orange); }
+
+@media (max-width: 960px) {
+  .topbar, nav, section, .hero-content, .hero-cards, .ft, .fb-bot { padding-left: 24px; padding-right: 24px; }
+  .nav-links { display: none; }
+  #hero { min-height: 75vh; }
+  .hero-content { padding-top: 90px; padding-bottom: 110px; }
+  .hero-cards { margin: -60px 24px 0; grid-template-columns: 1fr; }
+  #about, .impact-wrap, .donate-wrap, .vol-wrap, .contact-wrap, .founder-wrap { grid-template-columns: 1fr; gap: 36px; }
+  .prog-grid, .team-grid { grid-template-columns: 1fr 1fr; }
+  .gal-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gal-grid .gi:nth-child(1), .gal-grid .gi:nth-child(5) { grid-column: span 2; min-height: 200px; }
+  .ft { grid-template-columns: 1fr 1fr; padding: 36px 24px; gap: 28px; }
+  .fb-bot { flex-direction: column; gap: 6px; text-align: center; }
+  .impact-nums { grid-template-columns: 1fr 1fr; }
+  .about-badge { right: 0; }
+  .fg-row { grid-template-columns: 1fr; }
+}
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header>
-<div style="display:flex; align-items:center; gap:10px;">
-<img src="logo.jpg">
-<h2>Jindagi Ek Shuruaat</h2>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Nautanwa, Maharajganj, UP — 273164</span>
+    <span>✉ contact@jindagiekshuruaat.org</span>
+  </div>
+  <div class="topbar-socials">
+    <span style="font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;">Follow Us:</span>
+    <a href="#">f</a><a href="#">in</a><a href="#">yt</a>
+  </div>
 </div>
 
+<!-- NAV -->
 <nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="work.html">Our Work</a>
-<a href="team.html">Our Team</a>
-<a href="donate.html">Donate</a>
-<a href="contact.html">Contact</a>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main">Jindagi Ek Shuruaat</span>
+    <span class="nav-logo-sub">A step towards dignity, care &amp; positive change</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#founder">Our Team</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#volunteer">Volunteer</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#donate" class="nav-cta">Donate Now</a>
 </nav>
-</header>
 
 <!-- HERO -->
-<section class="hero">
-<div class="hero-container">
-
-<div class="hero-left">
-<img src="img1.jpg">
-<img src="img2.jpg">
-<img src="img3.jpg">
-</div>
-
-<div class="hero-right">
-<h3>Creating Real Impact</h3>
-<h1>10,000+ Lives Supported</h1>
-<p>Serving humanity through food, animal care & social awareness.</p>
-<a href="donate.html" class="btn">Donate Now</a>
-</div>
-
-</div>
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Nautanwa, Maharajganj</div>
+    <h1 class="hero-title">Serving Humanity,<br><span>One Step</span><br>at a Time</h1>
+    <p class="hero-subtitle">Creating impact through compassion and action. Focused on community welfare, animal care, and social awareness — dedicated to addressing hunger, safety, child labour, and environmental sustainability. Together, we can create meaningful change.</p>
+    <div class="hero-btns">
+      <a href="#donate" class="btn-orange">Donate Now</a>
+      <a href="#programs" class="btn-white-outline">Our Programs</a>
+    </div>
+  </div>
 </section>
 
-<!-- FOUNDER -->
-<section style="display:flex; align-items:center; gap:20px;">
-<img src="founder.jpg" style="width:150px; height:150px; border-radius:50%;">
-<div>
-<h2>From The Founder’s Desk</h2>
-<h3>Ashutosh Singh</h3>
-<p>Our mission is to bring real change. Every small help matters.</p>
+<!-- HERO BOTTOM CARDS -->
+<div class="hero-cards">
+  <div class="hc">
+    <div class="hc-icon">🤲</div>
+    <h3>Give Donation</h3>
+    <p>Support our programs and help us reach more lives in need across Maharajganj.</p>
+    <a href="#donate">Read More</a>
+  </div>
+  <div class="hc">
+    <div class="hc-icon">🙌</div>
+    <h3>Become Volunteer</h3>
+    <p>Join our growing team of 50+ volunteers and be the change you wish to see.</p>
+    <a href="#volunteer">Read More</a>
+  </div>
+  <div class="hc">
+    <div class="hc-icon">💛</div>
+    <h3>Quick Fundraise</h3>
+    <p>Start a fundraiser for a cause close to your heart and make a real difference.</p>
+    <a href="#contact">Read More</a>
+  </div>
 </div>
+
+<!-- ABOUT -->
+<section id="about" style="padding-top:120px;">
+  <div class="about-img">
+    <div class="about-img-main">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(232,130,26,0.4)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span style="font-size:12px;color:rgba(232,130,26,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Add photo here</span>
+    </div>
+    <div class="about-badge">
+      <div class="big">9+</div>
+      <div class="small">Years of Service</div>
+    </div>
+  </div>
+  <div>
+    <div class="sec-label">Who We Are</div>
+    <h2 class="sec-title">Born from empathy,<br>driven by purpose</h2>
+    <p class="sec-desc">Our organization is committed to uplifting lives through food distribution, clothing support, animal care, and social awareness campaigns focused on girls' safety and child labour. We also actively contribute to environmental well-being through plantation initiatives.</p>
+    <p class="sec-desc" style="margin-top:14px;">With collective effort, we aim to build a safer and more responsible society. Be a part of our journey.</p>
+    <div class="about-feats">
+      <div class="af"><div class="af-ic">🍱</div><div class="af-tx"><h4>Food &amp; Clothing Support</h4><p>Distributing meals and clothing to the hungry and underprivileged with warmth and dignity.</p></div></div>
+      <div class="af"><div class="af-ic">🛡️</div><div class="af-tx"><h4>Social Awareness Campaigns</h4><p>Driving awareness on girls' safety and child labour across schools and communities.</p></div></div>
+      <div class="af"><div class="af-ic">🌿</div><div class="af-tx"><h4>Environment &amp; Animal Care</h4><p>Plantation initiatives and rescue care for stray animals — compassion for all living beings.</p></div></div>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="#programs" class="btn-orange">Our Programs</a>
+      <a href="#contact" class="btn-outline-dark">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div style="text-align:center;max-width:600px;margin:0 auto;">
+    <div class="sec-label" style="justify-content:center;">What We Do</div>
+    <h2 class="sec-title" style="text-align:center;">Six programs, one mission</h2>
+    <p class="sec-desc" style="margin:0 auto;">From feeding the hungry to planting trees, from protecting girls to caring for animals — every program is a step towards a kinder society.</p>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card"><div class="pc-icon">🍱</div><h3>Food Distribution</h3><p>We regularly distribute cooked meals and dry rations to the homeless, daily-wage workers, and underprivileged families — ensuring no one sleeps hungry.</p><a href="#contact" class="pc-link">Learn more →</a></div>
+    <div class="prog-card"><div class="pc-icon">👕</div><h3>Clothing Support</h3><p>Collecting and distributing clothes to those in need, especially during winters — providing warmth and restoring dignity to every recipient.</p><a href="#contact" class="pc-link">Learn more →</a></div>
+    <div class="prog-card"><div class="pc-icon">🛡️</div><h3>Girls' Safety Awareness</h3><p>Conducting awareness campaigns in schools and communities to educate girls about their rights, personal safety, and avenues for help.</p><a href="#contact" class="pc-link">Learn more →</a></div>
+    <div class="prog-card"><div class="pc-icon">🧒</div><h3>Child Labour Prevention</h3><p>Raising awareness about child labour laws, working with families to keep children in school, and advocating for every child's right to a childhood.</p><a href="#contact" class="pc-link">Learn more →</a></div>
+    <div class="prog-card"><div class="pc-icon">🌿</div><h3>Plantation Initiatives</h3><p>Organising tree plantation drives across Nautanwa, Maharajganj and surrounding areas to improve air quality and restore green cover.</p><a href="#contact" class="pc-link">Learn more →</a></div>
+    <div class="prog-card"><div class="pc-icon">🐾</div><h3>Animal Care</h3><p>Feeding, rescuing, and providing basic medical aid to stray and injured animals — compassion for all living beings lies at the heart of our work.</p><a href="#contact" class="pc-link">Learn more →</a></div>
+  </div>
 </section>
 
 <!-- IMPACT -->
-<section>
-<h2>Our Impact</h2>
-<div class="impact-container">
-<div class="impact-box"><h2>1000+</h2><p>Meals</p></div>
-<div class="impact-box"><h2>500+</h2><p>Families</p></div>
-<div class="impact-box"><h2>200+</h2><p>Animals</p></div>
-</div>
+<section id="impact">
+  <div class="impact-wrap">
+    <div>
+      <div class="sec-label" style="color:rgba(255,255,255,0.5);">Our Impact</div>
+      <h2 class="sec-title" style="color:#fff;">Numbers that<br>carry real stories</h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.95;max-width:400px;margin-bottom:28px;">Every number represents a real life touched, a meal shared, a child protected, and a tree planted. This is what your support makes possible.</p>
+      <a href="#donate" class="btn-orange">Support Us Today</a>
+    </div>
+    <div class="impact-nums">
+      <div class="ib"><div class="n">10K+</div><div class="l">Lives Touched</div></div>
+      <div class="ib"><div class="n">10+</div><div class="l">Campaigns Run</div></div>
+      <div class="ib"><div class="n">50+</div><div class="l">Volunteers</div></div>
+      <div class="ib"><div class="n">10+</div><div class="l">Animals Rescued</div></div>
+    </div>
+  </div>
 </section>
 
-<!-- REVIEWS -->
-<section>
-<h2>What People Say ❤️</h2>
-
-<form onsubmit="addReview(event)">
-<input id="name" placeholder="Your Name" required><br><br>
-<textarea id="msg" placeholder="Write review" required></textarea><br><br>
-<button>Submit</button>
-</form>
-
-<div id="reviews"></div>
-
-<script>
-function addReview(e){
-e.preventDefault();
-
-let name = document.getElementById("name").value;
-let msg = document.getElementById("msg").value;
-
-let div = document.createElement("div");
-div.className="review";
-div.innerHTML="<p>"+msg+"</p><b>- "+name+"</b>";
-
-document.getElementById("reviews").appendChild(div);
-}
-</script>
-
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="sec-label">Founder's Desk</div>
+  <h2 class="sec-title">A message from our founder</h2>
+  <div class="founder-wrap">
+    <div class="founder-photo-box">
+      <div class="founder-photo-inner">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(232,130,26,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span style="font-size:11px;color:rgba(232,130,26,0.55);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Upload Photo Here</span>
+      </div>
+      <div class="founder-name-bar">
+        <div class="fn">Ashutosh Singh Rajpoot</div>
+        <div class="fr">Founder, Jindagi Ek Shuruaat</div>
+      </div>
+    </div>
+    <div class="founder-quote-box">
+      <div class="fqm">"</div>
+      <p>Every meaningful change begins with a simple idea. When I founded this organization, my vision was clear — to create a society where every individual has access to dignity, opportunity, and support.</p>
+      <p>We believe that true strength lies in compassion, unity, and collective action. Our mission is not just to provide help, but to empower people so they can transform their own lives and build a better future.</p>
+      <p>This journey has not always been easy, but every smile, every small victory, and every life we touch gives us the courage to keep moving forward.</p>
+      <p>I extend my heartfelt gratitude to all our volunteers, donors, and supporters who have stood with us and believed in this mission.</p>
+      <p>Together, let us continue to create a positive and lasting impact.</p>
+      <div class="fsign">
+        <div class="sn">Ashutosh Singh Rajpoot</div>
+        <div class="sr">Founder</div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- TEAM -->
+<section id="team">
+  <div class="sec-label">The People Behind the Mission</div>
+  <h2 class="sec-title">Our team</h2>
+  <p class="sec-desc">Nine passionate individuals united by one purpose — to serve, care, and create lasting change in our community.</p>
+  <div class="team-grid">
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#f0e8d8,#e0d0b8);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(232,130,26,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:var(--orange);">Photo</span></div><div class="tc-info"><h3>Member 1</h3><div class="tc-role">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#e8f0e8,#d0e8d0);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(45,106,79,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:#2D6A4F;">Photo</span></div><div class="tc-info" style="border-top-color:#2D6A4F;"><h3>Member 2</h3><div class="tc-role" style="color:#2D6A4F;">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#f0e8f8,#e4d0f0);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(155,81,224,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:#9B51E0;">Photo</span></div><div class="tc-info" style="border-top-color:#9B51E0;"><h3>Member 3</h3><div class="tc-role" style="color:#9B51E0;">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#e8f0f8,#d0e0f0);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(43,108,176,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:#2B6CB0;">Photo</span></div><div class="tc-info" style="border-top-color:#2B6CB0;"><h3>Member 4</h3><div class="tc-role" style="color:#2B6CB0;">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#f0e8d8,#e0d0b8);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(232,130,26,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:var(--orange);">Photo</span></div><div class="tc-info"><h3>Member 5</h3><div class="tc-role">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#e8f0e8,#d0e8d0);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(45,106,79,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:#2D6A4F;">Photo</span></div><div class="tc-info" style="border-top-color:#2D6A4F;"><h3>Member 6</h3><div class="tc-role" style="color:#2D6A4F;">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#f0e8f8,#e4d0f0);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(155,81,224,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:#9B51E0;">Photo</span></div><div class="tc-info" style="border-top-color:#9B51E0;"><h3>Member 7</h3><div class="tc-role" style="color:#9B51E0;">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#e8f0f8,#d0e0f0);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(43,108,176,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:#2B6CB0;">Photo</span></div><div class="tc-info" style="border-top-color:#2B6CB0;"><h3>Member 8</h3><div class="tc-role" style="color:#2B6CB0;">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+    <div class="tc"><div class="tc-photo" style="background:linear-gradient(135deg,#f0e8d8,#e0d0b8);"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(232,130,26,0.4)" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="tc-photo-hint" style="color:var(--orange);">Photo</span></div><div class="tc-info"><h3>Member 9</h3><div class="tc-role">Role / Designation</div><p>Brief description about this team member and their contribution to the mission.</p></div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sec-label">From the Field</div>
+  <h2 class="sec-title">A glimpse of our work</h2>
+  <p class="sec-desc">Real moments from our programs — the smiles, the milestones, and the quiet transformations that make this work meaningful.</p>
+  <div class="gal-grid">
+    <div class="gi" style="background:linear-gradient(135deg,#FEF3E6,#F5A84A33);"><div class="gi-inner"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E8821A" stroke-width="1" opacity="0.35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span style="font-size:11px;color:rgba(232,130,26,0.5);">Food Distribution</span></div><div class="gi-lbl">Food Distribution</div></div>
+    <div class="gi" style="background:linear-gradient(135deg,#EBF8F1,#52B78833);"><div class="gi-inner"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1" opacity="0.35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span style="font-size:11px;color:rgba(45,106,79,0.5);">Plantation Drive</span></div><div class="gi-lbl">Plantation Drive</div></div>
+    <div class="gi" style="background:linear-gradient(135deg,#F5EDFF,#9B51E033);"><div class="gi-inner"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9B51E0" stroke-width="1" opacity="0.35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span style="font-size:11px;color:rgba(155,81,224,0.5);">Girls' Safety</span></div><div class="gi-lbl">Girls' Safety Campaign</div></div>
+    <div class="gi" style="background:linear-gradient(135deg,#EBF4FF,#378ADD33);"><div class="gi-inner"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2B6CB0" stroke-width="1" opacity="0.35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span style="font-size:11px;color:rgba(43,108,176,0.5);">Clothing Support</span></div><div class="gi-lbl">Clothing Support</div></div>
+    <div class="gi" style="background:linear-gradient(135deg,#EAF3DE,#63992233);"><div class="gi-inner"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="1" opacity="0.35"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span style="font-size:11px;color:rgba(59,109,17,0.5);">Animal Care</span></div><div class="gi-lbl">Animal Care</div></div>
+  </div>
+  <p style="margin-top:18px;font-size:11px;color:#bbb;text-transform:uppercase;letter-spacing:0.08em;">Real photos coming soon</p>
+</section>
+
+<!-- DONATE -->
+<section id="donate">
+  <div class="donate-wrap">
+    <div>
+      <div class="sec-label" style="color:rgba(255,255,255,0.45);">Support Our Work</div>
+      <h2 class="sec-title" style="color:#fff;">Your gift<br>starts a life</h2>
+      <p class="sec-desc" style="color:rgba(255,255,255,0.6);">Even a small contribution creates ripples that last decades. Choose an amount and help us continue this journey.</p>
+      <div class="donate-amounts">
+        <button class="amt-btn">₹500</button>
+        <button class="amt-btn active">₹1,000</button>
+        <button class="amt-btn">₹2,500</button>
+        <button class="amt-btn">₹5,000</button>
+        <button class="amt-btn">Custom</button>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:24px;">₹1,000 can provide meals for a family in need for a week.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="#contact" class="btn-os">Donate ₹1,000</a>
+        <a href="#contact" class="btn-white-outline" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Other Ways</a>
+      </div>
+    </div>
+    <div>
+      <div class="cc"><h4>🍱 Food Distribution Fund</h4><div class="cc-bar"><div class="cc-fill" style="width:78%;"></div></div><div class="cc-pct">₹7.8L raised of ₹10L goal — 78%</div></div>
+      <div class="cc"><h4>🌿 Plantation Drive</h4><div class="cc-bar"><div class="cc-fill" style="width:60%;background:#52B788;"></div></div><div class="cc-pct">₹3L raised of ₹5L goal — 60%</div></div>
+      <div class="cc"><h4>🛡️ Girls' Safety Campaign</h4><div class="cc-bar"><div class="cc-fill" style="width:55%;background:#9B51E0;"></div></div><div class="cc-pct">₹2.75L raised of ₹5L goal — 55%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section id="volunteer">
+  <div class="vol-wrap">
+    <div>
+      <div class="sec-label">Join Us</div>
+      <h2 class="sec-title">Give your time,<br>change a world</h2>
+      <p class="sec-desc">Volunteers are the heartbeat of Jindagi Ek Shuruaat. Whether you have a few hours or a few months, there is a place for you here.</p>
+      <div class="vol-list">
+        <div class="vi"><div class="vi-num">01</div><div><strong>Food &amp; Clothing Drives</strong><span>Help us organise and distribute meals and clothes to those in need.</span></div></div>
+        <div class="vi"><div class="vi-num">02</div><div><strong>Awareness Campaigns</strong><span>Join our drives on girls' safety and child labour in schools and communities.</span></div></div>
+        <div class="vi"><div class="vi-num">03</div><div><strong>Plantation Volunteer</strong><span>Participate in our tree plantation drives and environmental initiatives.</span></div></div>
+        <div class="vi"><div class="vi-num">04</div><div><strong>Animal Care</strong><span>Support our efforts to feed, rescue, and care for stray and injured animals.</span></div></div>
+      </div>
+    </div>
+    <div class="vf">
+      <h3>Volunteer with us</h3>
+      <div class="fg-row">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Ramesh" /></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Kumar" /></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="you@email.com" /></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" /></div>
+      <div class="fg"><label>Area of Interest</label><select><option>Food &amp; Clothing Distribution</option><option>Girls' Safety Awareness</option><option>Child Labour Prevention</option><option>Plantation Drive</option><option>Animal Care</option><option>Other</option></select></div>
+      <div class="fg"><label>About You (optional)</label><textarea placeholder="Your background, skills, availability..."></textarea></div>
+      <button class="btn-os" style="width:100%;padding:14px;border:none;cursor:pointer;">Submit Application</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div>
+      <div class="sec-label">Get In Touch</div>
+      <h2 class="sec-title">We'd love to<br>hear from you</h2>
+      <p class="sec-desc">For partnerships, media inquiries, donations in kind, or just to say hello — reach us through any of these channels.</p>
+      <div class="cd">
+        <div class="cd-i"><div class="cd-ic">📍</div><div><h4>Address</h4><p>Jindagi Ek Shuruaat NGO<br>Nautanwa, Maharajganj, UP — 273164</p></div></div>
+        <div class="cd-i"><div class="cd-ic">📞</div><div><h4>Phone</h4><p>+91 XXXXX XXXXX</p></div></div>
+        <div class="cd-i"><div class="cd-ic">✉️</div><div><h4>Email</h4><p>contact@jindagiekshuruaat.org</p></div></div>
+        <div class="cd-i"><div class="cd-ic">🕐</div><div><h4>Office Hours</h4><p>Monday – Saturday, 10am – 6pm IST</p></div></div>
+      </div>
+    </div>
+    <div class="cf">
+      <h3>Send us a message</h3>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name" /></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
+      <div class="fg"><label>Subject</label><input type="text" placeholder="How can we help?" /></div>
+      <div class="fg"><label>Message</label><textarea placeholder="Your message here..."></textarea></div>
+      <button class="btn-os" style="width:100%;padding:14px;border:none;cursor:pointer;">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-<p>© 2026 Jindagi Ek Shuruaat</p>
+  <div class="ft">
+    <div class="fb">
+      <div class="lm">Jindagi Ek Shuruaat</div>
+      <div class="ls">A step towards dignity, care &amp; positive change</div>
+      <p>A grassroots NGO based in Nautanwa, Maharajganj, working to create dignified lives for the most underserved communities in Uttar Pradesh.</p>
+    </div>
+    <div class="fc"><h4>Our Work</h4><ul><li><a href="#programs">Food Distribution</a></li><li><a href="#programs">Clothing Support</a></li><li><a href="#programs">Girls' Safety</a></li><li><a href="#programs">Child Labour</a></li><li><a href="#programs">Plantation</a></li><li><a href="#programs">Animal Care</a></li></ul></div>
+    <div class="fc"><h4>Get Involved</h4><ul><li><a href="#donate">Donate</a></li><li><a href="#volunteer">Volunteer</a></li><li><a href="#contact">Partner with Us</a></li><li><a href="#contact">Corporate CSR</a></li></ul></div>
+    <div class="fc"><h4>Organisation</h4><ul><li><a href="#about">About Us</a></li><li><a href="#founder">Our Team</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="fb-bot">
+    <span>© 2025 Jindagi Ek Shuruaat. All rights reserved.</span>
+    <span>Made with <span class="fh">♥</span> in Maharajganj</span>
+  </div>
 </footer>
 
+<script>
+  document.querySelectorAll('.amt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
