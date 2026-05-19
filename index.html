@@ -564,7 +564,7 @@ footer{background:#0a0a0a}
             <div style="font-size:10px;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;font-weight:700;">UPI ID</div>
             <div class="upi-id-val">ashutoshsingh2345@oksbi</div>
             <button class="copy-btn" id="copyUpiBtn" onclick="copyUPI()">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2v1"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
               Copy UPI ID
             </button>
             <p class="upi-note">Open any UPI app (GPay, PhonePe, Paytm) — Scan QR or enter UPI ID — Enter amount — Pay</p>
@@ -749,15 +749,32 @@ document.getElementById('navLogo').src='data:image/jpeg;base64,iVBORw0KGgoAAAANS
 // EMAILJS INIT
 emailjs.init('8deNyWC-4slg-2NtG');
 
-// QR CODE
-window.addEventListener('load',function(){
+// QR CODE — with retry and canvas fallback
+function generateQR(){
+  const el=document.getElementById('qrCode');
+  if(!el)return;
+  el.innerHTML='';
   if(typeof QRCode!=='undefined'){
-    new QRCode(document.getElementById('qrCode'),{
+    new QRCode(el,{
       text:'upi://pay?pa=ashutoshsingh2345@oksbi&pn=Jindagi%20Ek%20Shuruaat&cu=INR',
-      width:140,height:140,colorDark:'#111',colorLight:'#ffffff',
+      width:140,height:140,colorDark:'#111111',colorLight:'#ffffff',
       correctLevel:QRCode.CorrectLevel.H
     });
+  } else {
+    // Canvas fallback: show QR via Google Charts API image
+    const img=document.createElement('img');
+    img.src='https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=ashutoshsingh2345@oksbi%26pn=Jindagi%20Ek%20Shuruaat%26cu=INR';
+    img.width=140;img.height=140;img.alt='UPI QR Code';
+    img.style.display='block';
+    el.appendChild(img);
   }
+}
+// Try on DOMContentLoaded, then again on load
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(generateQR, 300);
+});
+window.addEventListener('load', function(){
+  setTimeout(generateQR, 500);
 });
 
 // COPY UPI
