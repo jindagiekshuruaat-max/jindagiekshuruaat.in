@@ -57,7 +57,7 @@ nav{position:sticky;top:0;z-index:300;background:#fff;display:flex;align-items:c
 
 /* HERO */
 #hero{position:relative;min-height:95vh;display:flex;align-items:center;overflow:hidden;background:#08060300}
-.hero-bg{position:absolute;inset:0;z-index:0;background-image:url('images/hero.jpg');background-size:cover;background-position:center;background-repeat:no-repeat}
+.hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat}
 .hero-ov{position:absolute;inset:0;background:linear-gradient(110deg,rgba(5,3,1,.92) 38%,rgba(5,3,1,.6) 100%);z-index:1}
 .hero-content{position:relative;z-index:2;padding:140px 60px 120px;max-width:780px;animation:fadeUp .9s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -127,11 +127,26 @@ section{padding:88px 60px}
 .pc-link:hover{gap:10px}
 
 /* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px);overflow-y:auto}
 .modal-overlay.open{display:flex;animation:fadeIn .2s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{background:#fff;max-width:660px;width:100%;max-height:90vh;overflow-y:auto;border-radius:var(--radius-lg);animation:slideUp .3s ease}
-@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal{background:#fff;max-width:700px;width:100%;border-radius:16px;overflow:hidden;animation:slideUp .3s ease;box-shadow:0 24px 60px rgba(0,0,0,.25);margin:auto}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.modal-header{color:#fff;padding:28px 32px 24px;position:relative}
+.modal-header-icon{font-size:38px;margin-bottom:10px;display:block}
+.modal-header h2{font-family:'Lora',serif;font-size:24px;font-weight:600;margin-bottom:6px}
+.modal-tagline{font-size:14px;opacity:.88;font-style:italic;font-family:'Lora',serif}
+.modal-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.22);border:none;color:#fff;width:32px;height:32px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:background .2s;border-radius:50%;line-height:1}
+.modal-close:hover{background:rgba(255,255,255,.4)}
+.modal-body{padding:28px 32px;max-height:60vh;overflow-y:auto}
+.modal-section{margin-bottom:22px}
+.modal-section:last-of-type{margin-bottom:0}
+.modal-section-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);margin-bottom:9px;padding-left:10px;border-left:3px solid var(--orange)}
+.modal-body p{font-size:13.5px;color:var(--muted);line-height:1.9}
+.modal-list{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.modal-list li{font-size:13px;color:var(--muted);line-height:1.8;padding-left:18px;position:relative}
+.modal-list li::before{content:"→";position:absolute;left:0;color:var(--orange);font-size:12px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid #f0f0f0}to{opacity:1;transform:translateY(0)}}
 .modal-header{background:var(--orange);color:#fff;padding:26px 30px;position:relative;border-radius:var(--radius-lg) var(--radius-lg) 0 0}
 .modal-header h2{font-family:'Lora',serif;font-size:21px;font-weight:600;margin-bottom:5px}
 .modal-header p{font-size:12px;opacity:.88;line-height:1.7}
@@ -203,7 +218,7 @@ section{padding:88px 60px}
 .upi-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:26px;border-radius:var(--radius-lg);margin-top:22px}
 .upi-box h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:16px}
 .upi-qr-wrap{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
-.qr-box{background:#fff;padding:11px;border-radius:var(--radius-lg);flex-shrink:0}
+.qr-box{background:#fff;padding:12px;border-radius:var(--radius-lg);flex-shrink:0;min-width:172px;min-height:172px;display:flex;align-items:center;justify-content:center}
 .upi-id-wrap{flex:1;min-width:150px}
 .upi-id-val{font-size:14px;font-weight:600;color:#fff;background:rgba(255,255,255,.07);padding:12px 14px;border-radius:var(--radius);margin-bottom:10px;word-break:break-all;letter-spacing:.02em}
 .copy-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.65);padding:8px 16px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;border-radius:var(--radius)}
@@ -303,7 +318,204 @@ footer{background:#0a0a0a}
 </head>
 <body>
 
-<div class="modal-overlay" id="modal-food"><div class="modal"><div class="modal-header"><button class="modal-close" onclick="closeModal('food')">&times;</button><h2>&#127857; Food Distribution</h2><p>We regularly distribute cooked meals and dry rations to the homeless, daily-wage workers, and underprivileged families — ensuring no one sleeps hungry.</p></div><div class="modal-body"><h3>About This Program</h3><p>Our food distribution program operates every week, reaching daily-wage workers, homeless individuals, and underprivileged families across Nautanwa and Maharajganj. We distribute freshly cooked meals as well as dry ration kits including rice, dal, oil, and flour.</p><h3>What We Do</h3><ul><li>Weekly cooked meal distribution at identified locations</li><li>Monthly dry ration kits for families below poverty line</li><li>Special food camps during festivals and emergencies</li><li>Coordination with local volunteers and donors for large drives</li></ul><h3>Our Impact</h3><p>Over 500 meals distributed every month, reaching more than 200 families with ration support annually.</p><h3>How to Get Involved</h3><p>You can volunteer to cook, pack, or distribute food. Donations of Rs 500 feed a family for a week.</p><div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;"><a href="#volunteer" class="btn-os" onclick="closeModal('food')">Volunteer</a><a href="#donate" class="btn-os" onclick="closeModal('food') " style="background:#222;">Donate</a></div></div></div></div><div class="modal-overlay" id="modal-clothing"><div class="modal"><div class="modal-header"><button class="modal-close" onclick="closeModal('clothing')">&times;</button><h2>&#128085; Clothing Support</h2><p>Collecting and distributing clothes to those in need, especially during winters — providing warmth and restoring dignity to every recipient.</p></div><div class="modal-body"><h3>About This Program</h3><p>Our clothing support program collects gently used and new clothes from donors and distributes them to those in need with a special focus on winter months.</p><h3>What We Do</h3><ul><li>Year-round clothing collection drives in schools, offices, and communities</li><li>Special winter blanket and warm clothing distribution</li><li>Targeted support for children, elderly, and daily wage workers</li><li>Organized distribution camps in underserved localities</li></ul><h3>Our Impact</h3><p>Over 2,000 pieces of clothing and 300+ blankets distributed annually.</p><h3>How to Get Involved</h3><p>Donate clothes, blankets, or funds. Volunteer at collection and distribution drives.</p><div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;"><a href="#volunteer" class="btn-os" onclick="closeModal('clothing')">Volunteer</a><a href="#donate" class="btn-os" onclick="closeModal('clothing') " style="background:#222;">Donate</a></div></div></div></div><div class="modal-overlay" id="modal-girls"><div class="modal"><div class="modal-header"><button class="modal-close" onclick="closeModal('girls')">&times;</button><h2>&#128737; Girls Safety Awareness</h2><p>Conducting awareness campaigns in schools and communities to educate girls about their rights, personal safety, and avenues for help.</p></div><div class="modal-body"><h3>About This Program</h3><p>This program focuses on empowering girls and women with knowledge about personal safety, legal rights, and support systems. We conduct workshops, seminars, and community discussions.</p><h3>What We Do</h3><ul><li>Safety awareness workshops in schools and colleges</li><li>Street plays and nukkad nataks on girls rights and safety</li><li>Training on self-defense basics for young girls</li><li>Helpline awareness drives spreading knowledge about emergency numbers</li><li>Engagement with parents and community leaders</li></ul><h3>Our Impact</h3><p>Over 1,500 girls reached through workshops. Campaigns conducted in 15+ schools.</p><h3>How to Get Involved</h3><p>Volunteer as a trainer, counsellor, or awareness speaker.</p><div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;"><a href="#volunteer" class="btn-os" onclick="closeModal('girls')">Volunteer</a><a href="#donate" class="btn-os" onclick="closeModal('girls') " style="background:#222;">Donate</a></div></div></div></div><div class="modal-overlay" id="modal-child"><div class="modal"><div class="modal-header"><button class="modal-close" onclick="closeModal('child')">&times;</button><h2>&#128102; Child Labour Prevention</h2><p>Raising awareness about child labour laws, working with families to keep children in school, advocating for every child's right to a proper childhood.</p></div><div class="modal-body"><h3>About This Program</h3><p>Our program identifies families at risk, raises awareness about child labour laws, and connects families with government schemes for financial support.</p><h3>What We Do</h3><ul><li>Community awareness campaigns on child labour laws</li><li>Identification and reporting of child labour instances</li><li>Connecting families with government welfare schemes</li><li>School enrollment drives to bring out-of-school children back to education</li><li>Coordination with district administration and local NGOs</li></ul><h3>Our Impact</h3><p>Helped 100+ children leave labour and re-enroll in school. Awareness reached 50+ villages.</p><h3>How to Get Involved</h3><p>Help us identify cases, spread awareness, or sponsor a child's education.</p><div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;"><a href="#volunteer" class="btn-os" onclick="closeModal('child')">Volunteer</a><a href="#donate" class="btn-os" onclick="closeModal('child') " style="background:#222;">Donate</a></div></div></div></div><div class="modal-overlay" id="modal-plantation"><div class="modal"><div class="modal-header"><button class="modal-close" onclick="closeModal('plantation')">&times;</button><h2>&#127807; Plantation Initiatives</h2><p>Organising tree plantation drives across Nautanwa, Maharajganj and surrounding areas to improve air quality and restore green cover.</p></div><div class="modal-body"><h3>About This Program</h3><p>Our plantation initiative brings together volunteers, schools, and communities to plant and nurture trees across Nautanwa and Maharajganj.</p><h3>What We Do</h3><ul><li>Mass plantation drives on World Environment Day and Van Mahotsav</li><li>School plantation programs with awareness sessions</li><li>Maintenance visits to planted saplings for 6 months post-planting</li><li>Distribution of saplings to households for home planting</li></ul><h3>Our Impact</h3><p>1,000+ trees planted across 20+ locations. Active partnerships with 10+ schools.</p><h3>How to Get Involved</h3><p>Join a plantation drive, sponsor saplings, or adopt a tree and track its growth.</p><div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;"><a href="#volunteer" class="btn-os" onclick="closeModal('plantation')">Volunteer</a><a href="#donate" class="btn-os" onclick="closeModal('plantation') " style="background:#222;">Donate</a></div></div></div></div><div class="modal-overlay" id="modal-animal"><div class="modal"><div class="modal-header"><button class="modal-close" onclick="closeModal('animal')">&times;</button><h2>&#128054; Animal Care</h2><p>Feeding, rescuing, and providing basic medical aid to stray and injured animals — because a compassionate society extends its care to all living beings.</p></div><div class="modal-body"><h3>About This Program</h3><p>Our animal care program addresses the suffering of stray and injured animals. We run regular feeding routes, rescue injured animals, and coordinate with veterinarians.</p><h3>What We Do</h3><ul><li>Daily feeding routes for stray dogs and cats</li><li>Rescue and first aid for injured or sick stray animals</li><li>Coordination with local vets for medical treatment and vaccination</li><li>Awareness campaigns on animal rights and responsible pet ownership</li><li>Anti-cruelty reporting support</li></ul><h3>Our Impact</h3><p>10+ animals rescued and treated. Regular feeding at 8 locations across Nautanwa.</p><h3>How to Get Involved</h3><p>Volunteer on feeding routes, support with vet costs, or report animals in need.</p><div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;"><a href="#volunteer" class="btn-os" onclick="closeModal('animal')">Volunteer</a><a href="#donate" class="btn-os" onclick="closeModal('animal') " style="background:#222;">Donate</a></div></div></div></div>
+<div class="modal-overlay" id="modal-food">
+  <div class="modal">
+    <div class="modal-header" style="background:#E8821A;">
+      <button class="modal-close" onclick="closeModal('food')">&times;</button>
+      <div class="modal-header-icon">&#127857;</div>
+      <h2>Food Distribution</h2>
+      <p class="modal-tagline">No one should sleep hungry.</p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">About This Program</div>
+        <p>Our food distribution program is one of our most consistent and impactful initiatives. Every week, our volunteers gather to prepare and distribute freshly cooked meals to daily-wage workers, homeless individuals, and underprivileged families across Nautanwa and Maharajganj. We also provide dry ration kits — including rice, dal, flour, and oil — to families who need ongoing support.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">What We Do</div>
+        <ul class="modal-list"><li>Weekly cooked meal distribution at identified locations across Nautanwa</li><li>Monthly dry ration kits for families living below the poverty line</li><li>Special food camps during festivals, extreme weather, and emergencies</li><li>Coordination with local volunteers, donors, and community leaders</li><li>Hot meal drives during winter months for the homeless</li></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Our Impact So Far</div>
+        <p>Over 500 meals are distributed every month. More than 200 families receive ration support annually. Since our founding, we have served thousands of individuals across 10+ distribution points.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">How to Get Involved</div>
+        <p>You can volunteer to help cook, pack, or distribute food on our weekly drives. You can also donate groceries or funds — Rs 500 feeds a family for 3 days, and Rs 1,000 covers a full week of meals.</p>
+      </div>
+      <div class="modal-actions">
+        <a href="#volunteer" class="btn btn-primary" onclick="closeModal('food')">Volunteer With Us</a>
+        <a href="#donate" class="btn btn-dark" onclick="closeModal('food')">Donate Now</a>
+        <a href="#contact" class="btn btn-outline" onclick="closeModal('food')">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-clothing">
+  <div class="modal">
+    <div class="modal-header" style="background:#2B6CB0;">
+      <button class="modal-close" onclick="closeModal('clothing')">&times;</button>
+      <div class="modal-header-icon">&#128085;</div>
+      <h2>Clothing Support</h2>
+      <p class="modal-tagline">Warmth and dignity for every person.</p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">About This Program</div>
+        <p>Clothing is more than fabric — it is dignity. Our clothing support program collects gently used and new clothes from donors across schools, offices, and communities, and distributes them to those who need them most. We run year-round collection drives but intensify our efforts in winter, when the need for warm clothing is most urgent for the homeless and daily-wage workers.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">What We Do</div>
+        <ul class="modal-list"><li>Year-round clothing collection drives in schools, offices, and communities</li><li>Special winter blanket and warm clothing distribution camps</li><li>Targeted support for children, elderly individuals, and daily wage workers</li><li>Organized distribution camps in underserved villages and localities</li><li>Sorting and quality checking all donated items before distribution</li></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Our Impact So Far</div>
+        <p>Over 2,000 pieces of clothing and 300+ blankets have been distributed annually. Our winter drives have reached 500+ individuals in a single season.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">How to Get Involved</div>
+        <p>Donate your gently used clothes, new clothing, or warm blankets. Volunteer at our collection drives or distribution camps. Even Rs 200 can buy a warm pair of socks or gloves for a child.</p>
+      </div>
+      <div class="modal-actions">
+        <a href="#volunteer" class="btn btn-primary" onclick="closeModal('clothing')">Volunteer With Us</a>
+        <a href="#donate" class="btn btn-dark" onclick="closeModal('clothing')">Donate Now</a>
+        <a href="#contact" class="btn btn-outline" onclick="closeModal('clothing')">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-girls">
+  <div class="modal">
+    <div class="modal-header" style="background:#9B51E0;">
+      <button class="modal-close" onclick="closeModal('girls')">&times;</button>
+      <div class="modal-header-icon">&#128737;</div>
+      <h2>Girls Safety Awareness</h2>
+      <p class="modal-tagline">Every girl deserves to feel safe and empowered.</p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">About This Program</div>
+        <p>Safety is a right, not a privilege. Our Girls Safety Awareness program empowers girls and young women with knowledge about personal safety, their legal rights, and the support systems available to them. Through workshops, street plays, and community discussions, we break the silence around harassment, abuse, and gender inequality — and equip girls with practical tools to protect themselves and speak up.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">What We Do</div>
+        <ul class="modal-list"><li>Safety awareness workshops in schools, colleges, and community centres</li><li>Street plays and Nukkad Nataks on girls' rights, consent, and safety</li><li>Basic self-defense training sessions for young girls and teenagers</li><li>Helpline awareness drives sharing knowledge of emergency numbers and legal aid</li><li>Open discussions and sensitization sessions with parents and community leaders</li><li>Distribution of informational material on girls' rights in local languages</li></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Our Impact So Far</div>
+        <p>Over 1,500 girls reached through workshops. Campaigns conducted in 15+ schools across Maharajganj. Hundreds of parents sensitized through community engagement sessions.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">How to Get Involved</div>
+        <p>Volunteer as a trainer, counsellor, speaker, or organizer. Support us in reaching more schools and villages. You can also sponsor a workshop for an entire school — contact us to learn how.</p>
+      </div>
+      <div class="modal-actions">
+        <a href="#volunteer" class="btn btn-primary" onclick="closeModal('girls')">Volunteer With Us</a>
+        <a href="#donate" class="btn btn-dark" onclick="closeModal('girls')">Donate Now</a>
+        <a href="#contact" class="btn btn-outline" onclick="closeModal('girls')">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-child">
+  <div class="modal">
+    <div class="modal-header" style="background:#E8821A;">
+      <button class="modal-close" onclick="closeModal('child')">&times;</button>
+      <div class="modal-header-icon">&#128102;</div>
+      <h2>Child Labour Prevention</h2>
+      <p class="modal-tagline">Every child deserves a childhood, not a job.</p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">About This Program</div>
+        <p>Child labour robs children of their childhood, their education, and their future. Our Child Labour Prevention program works at the grassroots level to identify at-risk families, raise awareness about child labour laws, and connect families with government welfare schemes so they no longer depend on their children's income. We also run school enrollment drives to bring out-of-school children back into classrooms.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">What We Do</div>
+        <ul class="modal-list"><li>Community awareness campaigns on child labour laws and children's rights</li><li>Identification and reporting of child labour instances in our area</li><li>Connecting at-risk families with government welfare schemes and scholarships</li><li>School enrollment drives to bring out-of-school children back to education</li><li>Coordination with district administration, police, and local NGOs</li><li>Follow-up visits to ensure children stay enrolled in school</li></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Our Impact So Far</div>
+        <p>Helped 100+ children leave exploitative work and re-enroll in school. Awareness campaigns have reached 50+ villages. Families connected with government schemes for sustainable income.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">How to Get Involved</div>
+        <p>Help us identify cases of child labour in your area. Spread awareness in your community. You can also sponsor a child's school supplies, uniform, or fees to help them stay in school.</p>
+      </div>
+      <div class="modal-actions">
+        <a href="#volunteer" class="btn btn-primary" onclick="closeModal('child')">Volunteer With Us</a>
+        <a href="#donate" class="btn btn-dark" onclick="closeModal('child')">Donate Now</a>
+        <a href="#contact" class="btn btn-outline" onclick="closeModal('child')">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-plantation">
+  <div class="modal">
+    <div class="modal-header" style="background:#2D6A4F;">
+      <button class="modal-close" onclick="closeModal('plantation')">&times;</button>
+      <div class="modal-header-icon">&#127807;</div>
+      <h2>Plantation Initiatives</h2>
+      <p class="modal-tagline">Planting trees, planting hope.</p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">About This Program</div>
+        <p>The environment sustains all life. Our plantation initiative brings together volunteers, schoolchildren, and local communities to plant and nurture trees across Nautanwa and Maharajganj. We focus on native species that support local biodiversity and provide long-term benefits. Crucially, we do not just plant — we follow up for six months to ensure saplings survive and grow into healthy trees.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">What We Do</div>
+        <ul class="modal-list"><li>Mass plantation drives on World Environment Day, Van Mahotsav, and other occasions</li><li>School plantation programs with awareness sessions on environmental responsibility</li><li>Follow-up visits to planted saplings for 6 months post-planting</li><li>Distribution of saplings to households for home and kitchen gardens</li><li>Awareness campaigns on deforestation, climate change, and local ecology</li><li>Partnership with schools, panchayats, and local government bodies</li></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Our Impact So Far</div>
+        <p>1,000+ trees planted across 20+ locations. Active partnerships with 10+ schools. Dozens of households given saplings to grow at home. Growing green cover in Nautanwa and surrounding areas.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">How to Get Involved</div>
+        <p>Join a plantation drive — no experience needed, just willingness. Sponsor saplings at just Rs 50 each. Adopt a tree and track its growth. Schools can invite us for plantation programs.</p>
+      </div>
+      <div class="modal-actions">
+        <a href="#volunteer" class="btn btn-primary" onclick="closeModal('plantation')">Volunteer With Us</a>
+        <a href="#donate" class="btn btn-dark" onclick="closeModal('plantation')">Donate Now</a>
+        <a href="#contact" class="btn btn-outline" onclick="closeModal('plantation')">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-animal">
+  <div class="modal">
+    <div class="modal-header" style="background:#C05621;">
+      <button class="modal-close" onclick="closeModal('animal')">&times;</button>
+      <div class="modal-header-icon">&#128054;</div>
+      <h2>Animal Care</h2>
+      <p class="modal-tagline">Compassion for every living being.</p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">About This Program</div>
+        <p>A truly compassionate society does not limit its care to humans alone. Our animal care program addresses the suffering of stray and injured animals across Nautanwa. We run daily feeding routes, rescue injured and sick animals, provide first aid and basic treatment, and coordinate with local veterinarians for cases that need professional care. We also run awareness campaigns to promote responsible pet ownership and prevent cruelty.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">What We Do</div>
+        <ul class="modal-list"><li>Daily feeding routes for stray dogs and cats at 8 locations across Nautanwa</li><li>Rescue operations for injured, sick, or distressed stray animals</li><li>First aid and basic medical care for rescued animals</li><li>Coordination with local veterinarians for treatment and vaccination drives</li><li>Awareness campaigns on animal rights and responsible pet ownership</li><li>Anti-cruelty reporting support and community education</li></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Our Impact So Far</div>
+        <p>10+ animals rescued and treated. Regular feeding maintained at 8 locations. Hundreds of animals fed weekly. Vaccination drives conducted in partnership with local vets.</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">How to Get Involved</div>
+        <p>Volunteer on our daily feeding routes. Support our vet costs through donations. Report animals in need to us. Spread awareness about animal welfare in your neighbourhood.</p>
+      </div>
+      <div class="modal-actions">
+        <a href="#volunteer" class="btn btn-primary" onclick="closeModal('animal')">Volunteer With Us</a>
+        <a href="#donate" class="btn btn-dark" onclick="closeModal('animal')">Donate Now</a>
+        <a href="#contact" class="btn btn-outline" onclick="closeModal('animal')">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mobMenu">
@@ -386,7 +598,7 @@ footer{background:#0a0a0a}
 <section id="about" style="padding-top:130px;">
   <div class="about-img">
     <div class="about-img-main">
-<img src="images/about.jpg" alt="About Image" style="width:100%; height:100%; object-fit:cover;">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(232,130,26,0.35)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
       <span style="font-size:11px;color:rgba(232,130,26,0.45);font-weight:600;text-transform:uppercase;letter-spacing:.08em;">Add your photo</span>
     </div>
     <div class="about-badge"><div class="big">9+</div><div class="small">Years of Service</div></div>
@@ -748,36 +960,38 @@ document.getElementById('navLogo').src='data:image/jpeg;base64,iVBORw0KGgoAAAANS
 // EMAILJS INIT
 emailjs.init('8deNyWC-4slg-2NtG');
 
-// QR CODE — with retry and canvas fallback
+// QR CODE — robust inline generator
 function generateQR(){
   const el=document.getElementById('qrCode');
-  if(!el)return;
+  if(!el){setTimeout(generateQR,500);return;}
   el.innerHTML='';
+  // Method 1: QRCode.js library
   if(typeof QRCode!=='undefined'){
-    new QRCode(el,{
-      text:'upi://pay?pa=ashutoshsingh2345@oksbi&pn=Jindagi%20Ek%20Shuruaat&cu=INR',
-      width:140,height:140,colorDark:'#111111',colorLight:'#ffffff',
-      correctLevel:QRCode.CorrectLevel.H
-    });
-  } else {
-    // Canvas fallback: show QR via Google Charts API image
-    const img=document.createElement('img');
-    img.src='https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=ashutoshsingh2345@oksbi%26pn=Jindagi%20Ek%20Shuruaat%26cu=INR';
-    img.width=140;img.height=140;img.alt='UPI QR Code';
-    img.style.display='block';
-    el.appendChild(img);
+    try{
+      new QRCode(el,{
+        text:'upi://pay?pa=ashutoshsingh2345@oksbi&pn=Jindagi%20Ek%20Shuruaat&cu=INR',
+        width:148,height:148,colorDark:'#111111',colorLight:'#ffffff',
+        correctLevel:QRCode.CorrectLevel.H
+      });
+      return;
+    }catch(e){}
   }
+  // Method 2: Image from public QR API
+  const img=document.createElement('img');
+  img.width=148;img.height=148;img.alt='UPI QR Code';
+  img.style.cssText='display:block;border-radius:6px;';
+  img.src='https://api.qrserver.com/v1/create-qr-code/?size=148x148&ecc=H&data='
+    +encodeURIComponent('upi://pay?pa=ashutoshsingh2345@oksbi&pn=Jindagi Ek Shuruaat&cu=INR');
+  img.onerror=function(){
+    el.innerHTML='<div style="width:148px;height:148px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:11px;color:#666;text-align:center;padding:10px;">UPI ID:<br><strong>ashutoshsingh2345<br>@oksbi</strong></div>';
+  };
+  el.appendChild(img);
 }
-// Try on DOMContentLoaded, then again on load
-document.addEventListener('DOMContentLoaded', function(){
-  setTimeout(generateQR, 300);
-});
-window.addEventListener('load', function(){
-  setTimeout(generateQR, 500);
-});
+document.addEventListener('DOMContentLoaded',()=>setTimeout(generateQR,200));
+window.addEventListener('load',()=>setTimeout(generateQR,600));
 
 // COPY UPI
-function copyUPI(){
+function copyUPI(){ion copyUPI(){
   navigator.clipboard.writeText('ashutoshsingh2345@oksbi').then(()=>{
     const b=document.getElementById('copyUpiBtn');
     b.classList.add('done');b.innerHTML='&#10003; Copied!';
